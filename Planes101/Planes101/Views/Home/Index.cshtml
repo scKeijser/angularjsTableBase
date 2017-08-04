@@ -1,0 +1,27 @@
+﻿<div class="container" ng-controller="planeController">
+    <input type="text" ng-model="data.StartLoc" />
+    <input type="text" ng-model="data.EndLoc" />
+    <div id="planes" ng-init="getPlanes()">
+        <select ng-model="data.PlaneID">
+            <!--Option for each plane-->
+        </select>
+    </div>
+    <table ng-init="getPassengers()">
+        <tr>
+            <th><h4>Add To Flight</h4></th>
+            <th>
+                <h4>Name</h4> <!--Make header sort on click-->
+            </th>
+        </tr>
+        <tr ng-repeat="passenger in passengers | orderBy:propertyName:reverse">
+            <td>
+                <input type="checkbox" ng-true-value="{{passenger.ID}}" ng-model="data.Passengers[$index]" />
+            </td>
+            <td>
+                {{passenger.Name}}
+            </td>
+        </tr>
+    </table>
+    
+    <button ng-click="sub()">Submit Data!</button>
+</div>
